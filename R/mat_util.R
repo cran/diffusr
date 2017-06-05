@@ -20,7 +20,6 @@
 #' Create a stochastically normalized matrix/vector
 #'
 #' @export
-#' @author Simon Dirmeier, \email{simon.dirmeier@@gmx.de}
 #'
 #' @param obj  matrix/vector that is stochstically normalized
 #' @param ...  additional params
@@ -46,7 +45,7 @@ normalize.stochastic.numeric <- function(obj, ...)
     if (!all(.equals.double(colSums(obj), 1, .001)))
     {
       message("normalizing column vectors!")
-      obj <- .stoch.col.norm.cpp(obj)
+      obj <- stoch_col_norm_(obj)
     }
   }
   else if (is.vector(obj))
@@ -63,7 +62,6 @@ normalize.stochastic.numeric <- function(obj, ...)
 #' Calculate the Laplacian of a matrix
 #'
 #' @export
-#' @author Simon Dirmeier, \email{simon.dirmeier@@gmx.de}
 #'
 #' @param obj  matrix for which the Laplacian is calculated
 #' @param ...  additional params
@@ -84,6 +82,18 @@ normalize.laplacian.numeric <- function(obj, ...)
   if (nrow(obj) != ncol(obj)) stop('please provide a square matrix!')
   if (any(obj < 0.0))
     stop('please provide a matrix with only non-negative alues!')
-  lapl <- .laplacian.cpp(obj)
+  lapl <- laplacian_(obj)
   return(lapl)
 }
+
+#' @noRd
+#' @importFrom igraph graph_from_adjacency_matrix components
+.is.ergodic <- function(obj)
+{
+  adj   <- igraph::graph_from_adjacency_matrix(obj,
+                                               mode="directed",
+                                               weighted=T)
+  comps <- igraph::components(adj)
+  ifelse(length(comps$csize) == 1, TRUE, FALSE)
+}
+
