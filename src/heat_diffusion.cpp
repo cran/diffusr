@@ -29,25 +29,32 @@
 //' Do graph diffusion using an heat diffusion on a Laplacian.
 //'
 //' @noRd
-//' @param v0  the starting heat
+//' @param v0  matrix of starting heat
 //' @param W  the normalized Laplacian of the matrix
-//' @param t  time for which geat is measured
-//' @return  returns the stationary distribution p_inf
+//' @param t  time for which heat is measured
+//' @return  returns the distribution of heat at time t
 // [[Rcpp::interfaces(r, cpp)]]
 // [[Rcpp::export]]
-Eigen::VectorXd laplacian_diffusion_(const Eigen::VectorXd& v0,
-                                     const Eigen::MatrixXd& W,
-                                     const double t)
+Eigen::MatrixXd heat_diffusion_(const Eigen::MatrixXd& v0,
+                                const Eigen::MatrixXd& W,
+                                const double           t)
 {
-  Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> es(W);
-  Eigen::MatrixXd V = es.eigenvectors();
-  Eigen::VectorXd D = es.eigenvalues();
-  Eigen::VectorXd co =  V.transpose() * v0;
-  for (int i = 0; i < co.size(); ++i)
-  {
-    if (i % 25 == 0) Rcpp::checkUserInterrupt();
-    co(i) *= std::exp(-D(i) * t);
-  }
-  co =  V * co;
-  return co;
+    Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> es(W);
+    Eigen::MatrixXd                                V  = es.eigenvectors();
+    Eigen::VectorXd                                D  = es.eigenvalues();
+    Eigen::MatrixXd                                co = V.transpose() * v0;
+
+    // solution to the heat equation at time t
+    for (int i = 0; i < co.rows(); ++i)
+    {
+        for (int j = 0; j < co.cols(); ++j)
+        {
+            if (j % 25 == 0)
+                Rcpp::checkUserInterrupt();
+            co(i, j) *= std::exp(-D(i) * t);
+        }
+    }
+    co = V * co;
+
+    return co;
 }

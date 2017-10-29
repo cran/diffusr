@@ -50,16 +50,16 @@
     stop(paste0("'", name.graph, "' has to be non-negative"))
   if (dim(m)[1] != dim(m)[2])
     stop(paste(name.graph, "has to be of dimension (n x n)!"))
-  if (!is.null(v) && dim(m)[1] != length(v))
+  if (!is.null(v) && dim(m)[1] != dim(v)[1])
     stop(paste(name.vector, "has to have same dimension as", name.graph))
 }
 
 #' @noRd
-.check.vector <- function(v)
+.check.starting.matrix <- function(v)
 {
   name <- deparse(substitute(v))
   if (any(v < 0))
     stop(paste(name, "can only contain non-negative values!"))
-  if (!is.vector(v))
-    stop(paste("vectorial", name, "required"))
+  if (!is.matrix(v))
+    stop(paste("matrix-shaped", name, "required"))
 }

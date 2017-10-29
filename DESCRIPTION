@@ -1,11 +1,14 @@
 Package: diffusr
 Type: Package
 Title: Network Diffusion Algorithms
-Version: 0.1.1
-Authors@R: person("Simon", "Dirmeier", email = "simon.dirmeier@gmx.de", role = c("aut", "cre"))
+Version: 0.1.2
+Date: 2017-10-29
+Authors@R: person("Simon", "Dirmeier",
+                  email = "simon.dirmeier@gmx.de",
+                  role = c("aut", "cre"))
 Maintainer: Simon Dirmeier <simon.dirmeier@gmx.de>
-Description: Implementation of network diffusion algorithms such as insulated
-  heat propagation or Markov random walks. Network diffusion algorithms generally
+Description: Implementation of network diffusion algorithms such as
+  heat diffusion or Markov random walks. Network diffusion algorithms generally
   spread information in the form of node weights along the edges of a graph to other nodes.
   These weights can for example be interpreted as temperature, an initial amount
   of water, the activation of neurons in the brain, or the location of a random
@@ -14,6 +17,7 @@ Description: Implementation of network diffusion algorithms such as insulated
 URL: https://github.com/dirmeier/diffusr
 BugReports: https://github.com/dirmeier/diffusr/issues
 License: GPL (>= 3)
+Depends: R (>= 3.4)
 LazyData: TRUE
 LinkingTo: Rcpp, RcppEigen
 Imports: Rcpp, igraph, methods
@@ -22,7 +26,7 @@ VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 SystemRequirements: C++11
 NeedsCompilation: yes
-Packaged: 2017-06-05 13:45:41 UTC; simondi
+Packaged: 2017-10-29 23:28:15 UTC; simondi
 Author: Simon Dirmeier [aut, cre]
 Repository: CRAN
-Date/Publication: 2017-06-05 15:17:31 UTC
+Date/Publication: 2017-10-29 23:46:18 UTC
