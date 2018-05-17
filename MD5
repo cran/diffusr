@@ -1,4 +1,4 @@
-40f8bea125ec8a76a45af362498bffbd *DESCRIPTION
+2f985db54cea3c845313c434e7d99b90 *DESCRIPTION
 5285881e6ee6a4d1c802bbb09b105e77 *NAMESPACE
 630cb08c4569ee81a7d62081f22643ff *R/RcppExports.R
 4bec9ec0f9d1c2c70aad4a7c0770292e *R/diffusr-package.R
@@ -7,11 +7,11 @@ a3e9bc0485e2485e911ec6687cb2521e *R/mat_util.R
 5df3cd5408116c0799b0e334f173047c *R/mrw.R
 52d4d8816c9f1459cc3f36948afb6229 *R/neighbors.R
 25e2e6876bc554364a4f24965bc2da6c *R/util.R
-d0f81e14d02db19eab50cc6ac13290d5 *build/vignette.rds
-7a5c127e02213de0a400192dc8b79110 *inst/NEWS
+3e79994b58c67d661ae28b9a844fefa3 *build/vignette.rds
+a3a7f3c75b91dd48a4ccb150fd24706e *inst/NEWS
 cf0a7c87f7b7e714f604aa39a575e1be *inst/doc/diffusr.R
 3f6921cc98b6c8024b04668d5003aa0e *inst/doc/diffusr.Rmd
-d14c00c85e37847e118c80909354cf2c *inst/doc/diffusr.html
+326f4ea4d2d9f20b7e58f45b8b13d028 *inst/doc/diffusr.html
 8389a7d4d581cc37da1fa36e91528727 *inst/fig/diffusion.R
 89d05e7c0289b2605d1f7e549847315a *inst/fig/diffusion.gif
 2b3b1f9df368a30972e03e3f7103c097 *inst/include/diffusr.h
